@@ -28,6 +28,12 @@ class Main extends PluginBase{
 	public function onLoad(): void{
 		@mkdir($this->getDataFolder() . "emotes");
 		self::$instance = $this;
+
+		$this->saveResource("emotes");
+		$this->saveResource("emotes/64");
+		$this->saveResource("emotes/64/Cry.png");
+		$this->saveResource("emotes/128");
+		$this->saveResource("emotes/128/Cry.png");
 	}
 
 	public function onEnable(): void{

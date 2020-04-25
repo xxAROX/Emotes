@@ -93,6 +93,6 @@ class Emote{
 	 * @return string
 	 */
 	public function getSkinData(?int $resolution=64): string{
-		return $this->getPlugin()->getUtils()->toSkinData($this->path . "$resolution/{$this->name}.png");
+		return $this->getPlugin()->getUtils()->toSkinData($this->path . "/{$resolution}/{$this->name}.png");
 	}
 }

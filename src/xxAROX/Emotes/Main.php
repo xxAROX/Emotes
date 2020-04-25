@@ -24,6 +24,7 @@ class Main extends PluginBase{
 
 
 	public function onLoad(): void{
+		@mkdir($this->getDataFolder() . "emotes");
 		self::$instance = $this;
 	}
 

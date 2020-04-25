@@ -2,6 +2,7 @@
 /* Copyright (c) 2020 xxAROX. All rights reserved. */
 namespace xxAROX\Emotes;
 use pocketmine\plugin\PluginBase;
+use xxAROX\LanguageAPI\LanguageAPI;
 
 
 /**
@@ -23,7 +24,10 @@ class Main extends PluginBase
 	}
 
 	public function onEnable(): void{
-		$this->getServer()->getPluginManager()->registerEvents(new EventListener(), $this);
+		$this->registerAddons();
+		$this->registerCommands();
+		$this->registerListeners();
+		$this->registerTasks();
 	}
 
 	public function onDisable(): void{
@@ -35,5 +39,46 @@ class Main extends PluginBase
 
 	public static function getInstance(): self{
 		return self::$instance;
+	}
+
+	/**
+	 * Function registerListeners
+	 * @return void
+	 */
+	private function registerListeners(): void{
+		$pluginManager = $this->getServer()->getPluginManager();
+
+		$this->getLogger()->debug("registered listeners.");
+	}
+
+	/**
+	 * Function registerCommands
+	 * @return void
+	 */
+	private function registerCommands(): void{
+		$this->getServer()->getCommandMap()->registerAll("EMOTES", [
+		]);
+		$this->getLogger()->debug("registered commands.");
+	}
+
+	/**
+	 * Function registerTasks
+	 * @return void
+	 */
+	private function registerTasks(): void{
+		$scheduler = $this->getScheduler();
+
+		$this->getLogger()->debug("registered tasks.");
+	}
+
+	/**
+	 * Function registerAddons
+	 * @return void
+	 */
+	private function registerAddons(): void{
+		if (!LanguageAPI::isRegistered())
+			LanguageAPI::register($this);
+
+		$this->getLogger()->debug("registered addons.");
 	}
 }

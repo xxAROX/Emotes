@@ -3,6 +3,7 @@
 namespace xxAROX\Emotes;
 use pocketmine\plugin\PluginBase;
 use pocketmine\utils\Config;
+use xxAROX\Emotes\command\EmoteCommand;
 use xxAROX\Emotes\listener\JoinListener;
 use xxAROX\Emotes\utils\Utils;
 use xxAROX\LanguageAPI\LanguageAPI;
@@ -20,6 +21,7 @@ class Main extends PluginBase{
 	const PREFIX = "§eStimoMC §8» §7";
 	private $prefix = self::PREFIX;
 	public static $skins = [];
+	/** @var Emote[] */
 	public static $emotes = [];
 
 
@@ -70,6 +72,7 @@ class Main extends PluginBase{
 	 */
 	private function registerCommands(): void{
 		$this->getServer()->getCommandMap()->registerAll("EMOTES", [
+			new EmoteCommand("emote"),
 		]);
 		$this->getLogger()->debug("registered commands.");
 	}

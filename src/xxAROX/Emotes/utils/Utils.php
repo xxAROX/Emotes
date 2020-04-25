@@ -132,4 +132,18 @@ class Utils{
 
 		return 64;
 	}
+
+	/**
+	 * Function getEmoteByName
+	 * @param string $name
+	 * @return Emote
+	 */
+	public function getEmoteByName(string $name): ?Emote{
+		foreach (Main::$emotes as $emote) {
+			if ($emote->getName() === $name) {
+				return $emote;
+			}
+		}
+		return NULL;
+	}
 }
